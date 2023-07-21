@@ -22,10 +22,10 @@ export async function userProcessor(msg: any, ack: Function) {
           await BrokerInstance.send('user', {ActionType: ActionType.GET, TaskType: "Response", Message: await Get(user.Username)});
           break;
         case ActionType.EDIT:
-          await BrokerInstance.send('user', {ActionType: ActionType.GET, TaskType: "Response", Message: await Edit(user)});
+          await BrokerInstance.send('user', {ActionType: ActionType.EDIT, TaskType: "Response", Message: await Edit(user)});
           break;
         case ActionType.DELETE:
-          await BrokerInstance.send('user', {ActionType: ActionType.GET, TaskType: "Response", Message: await Delete(user)});
+          await BrokerInstance.send('user', {ActionType: ActionType.DELETE, TaskType: "Response", Message: await Delete(user)});
           break;
       }
       ack();
